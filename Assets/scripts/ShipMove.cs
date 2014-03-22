@@ -43,7 +43,8 @@ public class ShipMove : MonoBehaviour {
 		if (mouseClicked) {
 			rigidbody2D.velocity = movement;
 		} else {
-			rigidbody2D.velocity = new Vector2(0,0);
+			movement = movement*0.98f;
+			rigidbody2D.velocity = movement;
 		}
 
 		Vector3 moveDirection = currentPosition - previousPosition; 
