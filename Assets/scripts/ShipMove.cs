@@ -9,13 +9,14 @@ public class ShipMove : MonoBehaviour {
 	private Vector2 currentMousePositon;
 	private Vector2 previousPosition;
 	private Vector2 currentPosition;
+	private Vector2 currentSpeed;
 	private Vector2 movement;
 	private float shipAngle;
 	private bool mouseClicked;
 
 	// Use this for initialization
 	void Start () {
-
+		currentSpeed = new Vector2(0, 0);
 	}
 	
 	// Update is called once per frame
@@ -27,8 +28,11 @@ public class ShipMove : MonoBehaviour {
 		else if ((Input.GetAxis ("Mouse X")!= 0 || Input.GetAxis ("Mouse Y")!=0) && mouseClicked) {
 
 			currentMousePositon = Input.mousePosition;
-			float xMotion = (Input.mousePosition.x - touchDownPosition.x) * speed.x / (Screen.width/10);
-			float yMotion = (Input.mousePosition.y - touchDownPosition.y) * speed.y / (Screen.height/10);
+			float xMotion = (Input.mousePosition.x - touchDownPosition.x) * speed.x/1000;
+			float yMotion = (Input.mousePosition.y - touchDownPosition.y) * speed.y/1000;
+
+			xMotion = Mathf.Clamp(xMotion,-speed.x, speed.x);
+			yMotion = Mathf.Clamp(yMotion,-speed.y, speed.y);
 
 			movement = new Vector2(xMotion, yMotion);
 
@@ -40,12 +44,18 @@ public class ShipMove : MonoBehaviour {
 
 	void FixedUpdate() {
 
+		Vector2 oldCurrentSpeed = currentSpeed;
+
 		if (mouseClicked) {
-			rigidbody2D.velocity = movement;
+			currentSpeed = oldCurrentSpeed+movement;
 		} else {
-			movement = movement*0.98f;
-			rigidbody2D.velocity = movement;
+			currentSpeed = Vector2.Scale(currentSpeed, new Vector2(0.993f, 0.993f));
 		}
+
+		currentSpeed.x = Mathf.Clamp(currentSpeed.x, -speed.x, speed.x);
+		currentSpeed.y = Mathf.Clamp (currentSpeed.y, -speed.y, speed.y);
+
+		rigidbody2D.velocity = currentSpeed;
 
 		Vector3 moveDirection = currentPosition - previousPosition; 
 		if (moveDirection != Vector3.zero) 

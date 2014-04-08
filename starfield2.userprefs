@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/FollowTargetScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/ParticleSortingLayer.cs">
     <Files>
-      <File FileName="Assets/Scripts/ShipMove.cs" Line="10" Column="35" />
-      <File FileName="Assets/scripts/StartHorizontal.cs" Line="12" Column="1" />
-      <File FileName="Assets/scripts/FollowTargetScript.cs" Line="20" Column="4" />
+      <File FileName="Assets/scripts/ParticleSortingLayer.cs" Line="12" Column="1" />
+      <File FileName="Assets/scripts/ShipMove.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/PlaceAsteroids.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/StarLayer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
